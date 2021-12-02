@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_tmdb/widgets/movie_list/movie_list_widget.dart';
 
 class MainScreenWidget extends StatefulWidget {
   MainScreenWidget({Key? key}) : super(key: key);
@@ -8,13 +9,11 @@ class MainScreenWidget extends StatefulWidget {
 }
 
 class _MainScreenWidgetState extends State<MainScreenWidget> {
-  static const List<Widget> _widgetOptions = <Widget>[
+  static final List<Widget> _widgetOptions = <Widget>[
     Text(
       'Новости',
     ),
-    Text(
-      'Избранное',
-    ),
+    MovieListWidget(),
     Text(
       'Аккаунт',
     ),
@@ -43,7 +42,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.feed), label: 'Новости'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border), label: 'Избранное'),
+              icon: Icon(Icons.movie_creation), label: 'Фильмы'),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_box), label: 'Аккаунт'),
         ],
