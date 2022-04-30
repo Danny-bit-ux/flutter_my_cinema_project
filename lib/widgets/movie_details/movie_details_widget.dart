@@ -14,9 +14,10 @@ class MovieDetailsWidgets extends StatefulWidget {
 class _MovieDetailsWidgetsState extends State<MovieDetailsWidgets> {
   @override
   Widget build(BuildContext context) {
+    final String text = "Tom Clancy's Without Remorse";
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tom Clancy's Without Remorse"),
+        title: Text(text),
         centerTitle: true,
       ),
       body: ColoredBox(
