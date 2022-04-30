@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class Movie {
+  final int id;
   final String imageName;
   final String title;
   final String time;
   final String description;
 
   Movie(
-      {required this.imageName,
+      {required this.id,
+      required this.imageName,
       required this.title,
       required this.time,
       required this.description});
@@ -23,42 +25,49 @@ class MovieListWidget extends StatefulWidget {
 class _MovieListWidgetState extends State<MovieListWidget> {
   final _movies = [
     Movie(
+        id: 1,
         imageName: 'images/Fast&Furious.jpg',
         title: 'Форсаж',
         time: 'April 7, 2009',
         description:
             '«Форса́ж 4» — американский криминальный боевик, снятый режиссёром Джастином Лином.'),
     Movie(
+        id: 2,
         imageName: 'images/Fast&Furious.jpg',
         title: 'Смертельная битва',
         time: 'April 7, 2009',
         description:
             '«Форса́ж 4» — американский криминальный боевик, снятый режиссёром Джастином Лином.'),
     Movie(
+        id: 3,
         imageName: 'images/Fast&Furious.jpg',
         title: 'Прибытие',
         time: 'April 7, 2009',
         description:
             '«Форса́ж 4» — американский криминальный боевик, снятый режиссёром Джастином Лином.'),
     Movie(
+        id: 4,
         imageName: 'images/Fast&Furious.jpg',
         title: 'Назад в будущее',
         time: 'April 7, 2009',
         description:
             '«Форса́ж 4» — американский криминальный боевик, снятый режиссёром Джастином Лином.'),
     Movie(
+        id: 5,
         imageName: 'images/Fast&Furious.jpg',
         title: 'Фиксики',
         time: 'April 7, 2009',
         description:
             '«Форса́ж 4» — американский криминальный боевик, снятый режиссёром Джастином Лином.'),
     Movie(
+        id: 6,
         imageName: 'images/Fast&Furious.jpg',
         title: 'Смешарики',
         time: 'April 7, 2009',
         description:
             '«Форса́ж 4» — американский криминальный боевик, снятый режиссёром Джастином Лином.'),
     Movie(
+        id: 7,
         imageName: 'images/Fast&Furious.jpg',
         title: 'Свинка Пеппа',
         time: 'April 7, 2009',
@@ -87,6 +96,12 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     super.initState();
     _filteredMovies = _movies;
     _searchController.addListener(_searchMovies);
+  }
+
+  void _onMoveTap(int index) {
+    final id = _movies[index].id;
+    Navigator.of(context)
+        .pushNamed('/main_screen/movie_details_widget', arguments: id);
   }
 
   @override
@@ -174,9 +189,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                       color: Colors.transparent,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(10),
-                        onTap: () {
-                          print('11');
-                        },
+                        onTap: () => _onMoveTap(index),
                       ),
                     )
                   ],
